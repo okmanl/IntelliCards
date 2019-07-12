@@ -1,8 +1,9 @@
 # IntelliCards
-An open source web app, that allows users to create intelligent flashcards, that quizzes users using spaced repetition.
+An open source web app, that allows users to create intelligent flashcards, that quizzes users using spaced repetition. Uses React for front-end and Java Spring Boot for backend. Still in early development phase. If you would like to contribute, read the 
 
 
 
+** Contribution Guide **
 Todo
 
 Unit Tests need to be written for the following code
