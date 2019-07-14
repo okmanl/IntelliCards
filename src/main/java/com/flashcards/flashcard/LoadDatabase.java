@@ -24,7 +24,7 @@ public class LoadDatabase implements CommandLineRunner {
         
 		this.flashcardRepository.save(new FlashCard("What is Spring Boot?", "A framework that allows writing web apps"));
 		
-		this.userRepository.save(new User("eric", "gumba", "gumba"));
+		this.userRepository.save(new User("user", "password", "password"));
         
 	}
 }

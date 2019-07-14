@@ -18,19 +18,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController 
 class UserController {   
  
-    // @Autowired
-    // UserService userService;
+    @Autowired 
+    @CrossOrigin(origins = "http://localhost:3000") 
+    @PostMapping(value = "/login")
+    String login() {  
 
-    @CrossOrigin(origins = "http://localhost:3000") 
-    @GetMapping(value = "/login")
-    String login() { 
-      return "hello world"; 
-    }
-    @CrossOrigin(origins = "http://localhost:3000") 
-    @GetMapping(value = "/register")
-    String register() { 
-      return "hello world"; 
-    }
+      return "login success";
+    } 
       
 
 }

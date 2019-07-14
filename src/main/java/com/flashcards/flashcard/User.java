@@ -17,6 +17,7 @@ class User{
     private String userName;
     private String password;
     private String passwordConfirm;
+    private String role;
     @OneToMany
     private List<FlashCard> flashCards;
  
@@ -24,6 +25,7 @@ class User{
         this.userName = user;
         this.password = pass;
         this.passwordConfirm = passwordConfirm;
+        this.role = "USER";
     }
 
     void appendCard(FlashCard card){
