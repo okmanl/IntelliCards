@@ -3,8 +3,7 @@ package com.flashcards.flashcard;
 import lombok.Data;
 
 import java.time.Duration;
-import java.time.Instant;
-import java.util.Date;
+import java.time.Instant; 
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

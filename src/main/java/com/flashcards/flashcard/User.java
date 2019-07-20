@@ -12,19 +12,20 @@ import javax.persistence.OneToMany;
 @Data
 @Entity
 
-class User{
+public class User{
     private @Id @GeneratedValue long id;
-    private String userName;
+    private String email;
     private String password;
     private String passwordConfirm;
     private String role;
     @OneToMany
     private List<FlashCard> flashCards;
  
-    User(String user, String pass, String passwordConfirm){
-        this.userName = user;
-        this.password = pass;
-        this.passwordConfirm = passwordConfirm;
+    User(){ 
+    }
+    User(String email, String pass ){
+        this.email = email;
+        this.password = pass; 
         this.role = "USER";
     }
 

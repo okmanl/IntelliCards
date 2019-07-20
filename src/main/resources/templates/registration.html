@@ -6,17 +6,18 @@
     </head>
     <body>
         <div th:if="${param.error}">
+            {errorMessage}
         </div>
+
+        <span th:text="${errorMessage}"></span>
         <div th:if="${param.logout}">
             You have been logged out.
         </div>
-        <form th:action="@{/login}" method="post">
-            <div><label> User Namespace : <input type="text" name="username"/> </label></div>
+        <form th:action="@{/registration}" th:object="${user}" method="post"> 
+            <div><label> Email: <input type="text" name="email"/> </label></div>
             <div><label> Password: <input type="password" name="password"/> </label></div>
-            <div><input type="submit" value="Sign In"/>  </div> 
-        </form>
-        <form th:action="@{/registration}" method="get">
-            <input type="submit" value="Register"/>
-        </form>
+            <div><label> Comfirm Password: <input type="password" name="confirmPassword"/> </label></div>
+            <div><input type="submit" value="submit"/>  </div> 
+        </form> 
     </body>
 </html>

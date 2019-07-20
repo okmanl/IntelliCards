@@ -1,30 +1,69 @@
 package com.flashcards.flashcard;
  
-import java.net.URISyntaxException;
+import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
- 
+// import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult; 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping; 
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.ModelAndView;
 
-@RestController 
-class UserController {   
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@Controller
+class UserController {
  
-    @Autowired 
-    @CrossOrigin(origins = "http://localhost:3000") 
-    @PostMapping(value = "/login")
-    String login() {  
+  UserService userService;
 
-      return "login success";
+
+  public UserController(UserService userService){
+    this.userService = userService;
+  }
+
+  @GetMapping(value = "/login")
+  String login(Model model) {
+
+    log.info("congrats big bro!");
+
+    return "login";
+  }
+
+  @GetMapping(value = "/showViewPage")
+  public ModelAndView passParametersWithModel() {
+    ModelAndView mav = new ModelAndView("viewPage.html");
+    mav.addObject("message", "Baeldung");
+    return mav;
+  }
+
+  @GetMapping(value = "/registration")
+  public String showRegistrationForm(Model model) {
+    return "registration";
+  }
+
+ 
+  @PostMapping(value = "/registration")
+  public ModelAndView registerUserAccount( @ModelAttribute(value = "user")  @Valid UserDto user,
+      BindingResult result ) {  
+
+    ModelAndView mav = new ModelAndView(); 
+    mav.setViewName("registration");
+
+    if( result.hasErrors() ){ 
+      mav.addObject("errorMessage", "Please fill out all fields");
+      return mav;
     } 
-      
-
+    try {
+      userService.registerNewUser(user);
+      return new ModelAndView("viewPage");
+    } catch (Exception e) { 
+      mav.addObject("errorMessage", e.getMessage());
+      return mav;
+    }    
+  } 
 }

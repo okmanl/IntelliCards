@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
+import lombok.extern.slf4j.Slf4j;
+@Slf4j
 @Component
 public class LoadDatabase implements CommandLineRunner {
 
@@ -24,7 +26,10 @@ public class LoadDatabase implements CommandLineRunner {
         
 		this.flashcardRepository.save(new FlashCard("What is Spring Boot?", "A framework that allows writing web apps"));
 		
-		this.userRepository.save(new User("user", "password", "password"));
+		this.userRepository.save(new User("ericgumba@gmail.com", "password")); 
+		
+		log.info("---------------------USER REPOSITORY FIND BY EMAIL -----------------------------");
+		 log.info(userRepository.findByEmail("ericgumba@gmail.com").getEmail());
         
 	}
 }

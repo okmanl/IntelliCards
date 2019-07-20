@@ -8,9 +8,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.WebEnvironment;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.test.context.junit4.SpringRunner; 
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -23,9 +21,7 @@ public class HttpRequestTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-
-    @Autowired
-    private MockMvc mvc;
+ 
  
     @Test
     public void greetingShouldReturnDefaultMessage() throws Exception {
