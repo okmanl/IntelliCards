@@ -1,4 +1,7 @@
-package com.flashcards.flashcard;
+package com.flashcards.flashcard.Web;
+
+import com.flashcards.flashcard.Model.FlashCard;
+import com.flashcards.flashcard.Service.FlashCardService;
  
 import java.net.URISyntaxException; 
  

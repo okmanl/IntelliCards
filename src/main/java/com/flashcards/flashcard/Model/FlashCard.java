@@ -1,4 +1,4 @@
-package com.flashcards.flashcard;
+package com.flashcards.flashcard.Model;
 
 import lombok.Data;
 
@@ -11,6 +11,7 @@ import javax.persistence.Id;
 
 @Data
 @Entity
+public
 class FlashCard{
 
     private @Id @GeneratedValue Long id;
@@ -25,13 +26,13 @@ class FlashCard{
 
     }
 
-    FlashCard(String question, String answer){
+    public FlashCard(String question, String answer){
         this.question = question;
         this.answer = answer;
         this.dateLastAnswered = Instant.now();
     }
 
-    FlashCard(String question){
+    public FlashCard(String question){
         this.question = question;
         this.dateLastAnswered = Instant.now();
     }

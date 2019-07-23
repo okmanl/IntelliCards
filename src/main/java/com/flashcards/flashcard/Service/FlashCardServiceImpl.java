@@ -1,12 +1,14 @@
-package com.flashcards.flashcard;
+package com.flashcards.flashcard.Service;
 
 import java.util.List;
+import com.flashcards.flashcard.Repository.*;
+import com.flashcards.flashcard.Model.FlashCard;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-class FlashCardService implements FlashCardServiceInterface {
+class FlashCardServiceImpl implements FlashCardService {
 
     @Autowired
     private FlashCardRepository repository; 

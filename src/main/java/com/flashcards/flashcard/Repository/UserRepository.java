@@ -1,7 +1,8 @@
-package com.flashcards.flashcard;
+package com.flashcards.flashcard.Repository;
 
  
 import org.springframework.data.jpa.repository.JpaRepository; 
+import com.flashcards.flashcard.Model.*;
 
 public interface UserRepository extends JpaRepository<User, Long> {
 

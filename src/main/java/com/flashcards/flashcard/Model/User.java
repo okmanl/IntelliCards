@@ -1,4 +1,4 @@
-package com.flashcards.flashcard;
+package com.flashcards.flashcard.Model;
 
 import lombok.Data;
 
@@ -15,15 +15,14 @@ import javax.persistence.OneToMany;
 public class User{
     private @Id @GeneratedValue long id;
     private String email;
-    private String password;
-    private String passwordConfirm;
+    private String password; 
     private String role;
     @OneToMany
     private List<FlashCard> flashCards;
  
     User(){ 
     }
-    User(String email, String pass ){
+    public User(String email, String pass ){
         this.email = email;
         this.password = pass; 
         this.role = "USER";

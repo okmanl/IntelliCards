@@ -1,26 +1,35 @@
-package com.flashcards.flashcard;
- 
+package com.flashcards.flashcard.Web;
+
 import javax.validation.Valid;
 
-import org.springframework.beans.factory.annotation.Autowired;
-// import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
+import com.flashcards.flashcard.Model.User;
+import com.flashcards.flashcard.Security.MyUserDetailsService;
+import com.flashcards.flashcard.Service.UserService;
+import com.flashcards.flashcard.Web.Dto.UserDto;
+ 
+import org.springframework.beans.factory.annotation.Autowired; 
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;  
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder; 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult; 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.bind.annotation.PostMapping; 
 import org.springframework.web.servlet.ModelAndView;
 
 import lombok.extern.slf4j.Slf4j;
-
+ 
 @Slf4j
 @Controller
 class UserController {
  
   UserService userService;
-
+  @Autowired
+  AuthenticationManagerBuilder auth;
+  @Autowired 
+  MyUserDetailsService userDetailsService;
 
   public UserController(UserService userService){
     this.userService = userService;
@@ -28,11 +37,10 @@ class UserController {
 
   @GetMapping(value = "/login")
   String login(Model model) {
-
-    log.info("congrats big bro!");
-
+ 
     return "login";
-  }
+  } 
+
 
   @GetMapping(value = "/showViewPage")
   public ModelAndView passParametersWithModel() {
@@ -59,11 +67,20 @@ class UserController {
       return mav;
     } 
     try {
-      userService.registerNewUser(user);
-      return new ModelAndView("viewPage");
+      log.info("---------------regis complete ---------------");
+      User newUser = userService.registerNewUser(user);
+
+      userDetailsService.saveNewUser( newUser );
+      log.info("---------------regis?????????????complete ---------------");
+      return new ModelAndView("login");
     } catch (Exception e) { 
       mav.addObject("errorMessage", e.getMessage());
       return mav;
     }    
-  } 
+  }
+  
+  
+  public PasswordEncoder passwordEncoder() {
+      return new BCryptPasswordEncoder();
+  }
 }

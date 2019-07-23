@@ -1,5 +1,10 @@
 package com.flashcards.flashcard;
 
+import com.flashcards.flashcard.Model.FlashCard;
+import com.flashcards.flashcard.Model.User;
+import com.flashcards.flashcard.Repository.FlashCardRepository;
+import com.flashcards.flashcard.Repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -27,7 +32,7 @@ public class LoadDatabase implements CommandLineRunner {
 		this.flashcardRepository.save(new FlashCard("What is Spring Boot?", "A framework that allows writing web apps"));
 		
 		this.userRepository.save(new User("ericgumba@gmail.com", "password")); 
-		
+		 
 		log.info("---------------------USER REPOSITORY FIND BY EMAIL -----------------------------");
 		 log.info(userRepository.findByEmail("ericgumba@gmail.com").getEmail());
         

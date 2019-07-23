@@ -1,4 +1,4 @@
-package com.flashcards.flashcard;
+package com.flashcards.flashcard.Web.Dto;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;

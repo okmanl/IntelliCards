@@ -1,8 +1,14 @@
-package com.flashcards.flashcard;
+package com.flashcards.flashcard.Error;
+
+import com.flashcards.flashcard.EmailValidator;
+import com.flashcards.flashcard.Model.User;
+import com.flashcards.flashcard.Repository.UserRepository;
+import com.flashcards.flashcard.Web.Dto.UserDto;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
+public
 class ErrorGenerator{
 
     @Autowired

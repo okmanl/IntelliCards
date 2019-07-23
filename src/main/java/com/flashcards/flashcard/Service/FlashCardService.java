@@ -1,8 +1,10 @@
-package com.flashcards.flashcard;
+package com.flashcards.flashcard.Service;
 
 import java.util.List;
 
-interface FlashCardServiceInterface {
+import com.flashcards.flashcard.Model.FlashCard;
+
+public interface FlashCardService {
     void updateCard(long id, FlashCard newCard);
     FlashCard getCard(long id);
     List<FlashCard> getAllCards();

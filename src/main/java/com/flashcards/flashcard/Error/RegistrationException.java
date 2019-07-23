@@ -1,4 +1,4 @@
-package com.flashcards.flashcard;
+package com.flashcards.flashcard.Error;
 
 public final class RegistrationException extends RuntimeException {
 
